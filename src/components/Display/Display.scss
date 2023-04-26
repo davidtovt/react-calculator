@@ -1,0 +1,21 @@
+.display {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  input {
+    border: 1px solid #ddd;
+    text-align: right;
+
+    &:first-child {
+      margin-bottom: .25rem;
+      padding: .5rem 1rem;
+      font-size: .875rem;
+    }
+
+    &:last-child {
+      padding: .5rem 1rem;
+      font-size: 1.5rem;
+    }
+  }
+}
