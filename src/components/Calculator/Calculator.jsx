@@ -1,10 +1,7 @@
-import { useReducer } from 'react';
+import { useContext } from 'react';
 
-import {
-  calculatorReducer,
-  CALCULATOR_INITIAL_STATE,
-  CALCULATOR_ACTION_TYPES,
-} from '../../reducers/calculatorReducer';
+import { CalculatorContext } from '../../contexts/calculator';
+import { numSeparator } from '../../utils/helpers';
 import Display from '../Display/Display';
 import Button from '../Button/Button';
 import Switcher from '../Switcher/Switcher';
@@ -12,10 +9,9 @@ import Switcher from '../Switcher/Switcher';
 import './Calculator.scss';
 
 const Calculator = () => {
-  const [state, dispatch] = useReducer(
-    calculatorReducer,
-    CALCULATOR_INITIAL_STATE
-  );
+  const { state, dispatch, CALCULATOR_ACTION_TYPES } =
+    useContext(CalculatorContext);
+  const { decimalSeparator } = numSeparator();
 
   const setOperand = (e, operand) => {
     dispatch({
@@ -95,7 +91,7 @@ const Calculator = () => {
 
   return (
     <div className="calculator">
-      <Display state={state} dispatch={dispatch} />
+      <Display />
 
       <div className="grid grid-cols-5 align-items-center">
         <div className="col-span-2">
@@ -168,8 +164,11 @@ const Calculator = () => {
             <Button mode="digit" handleClick={setOperand}>
               0
             </Button>
-            <Button mode="digit" handleClick={(e) => setOperand(e, ',')}>
-              ,
+            <Button
+              mode="digit"
+              handleClick={(e) => setOperand(e, decimalSeparator)}
+            >
+              {decimalSeparator}
             </Button>
             <Button mode="digit" handleClick={toggleSigns}>
               +/-
@@ -179,10 +178,18 @@ const Calculator = () => {
 
         <div className="col-span-2">
           <div className="grid grid-cols-2">
-            <Button mode="memory" handleClick={memoryClear}>
+            <Button
+              mode="memory"
+              handleClick={memoryClear}
+              disabled={!state.memory}
+            >
               MC
             </Button>
-            <Button mode="memory" handleClick={memoryRead}>
+            <Button
+              mode="memory"
+              handleClick={memoryRead}
+              disabled={!state.memory}
+            >
               MR
             </Button>
             <Button mode="memory" handleClick={() => memoryChange('+')}>
@@ -213,7 +220,7 @@ const Calculator = () => {
               <Button mode="operator" handleClick={calculatePercentage}>
                 %
               </Button>
-              <Button styleType="operator" handleClick={unaryCalculate}>
+              <Button mode="operator" handleClick={unaryCalculate}>
                 √
               </Button>
               <Button mode="operator" handleClick={setOperator}>

@@ -1,28 +1,25 @@
+import SkinChooser from '../SkinChooser/SkinChooser';
+import LangChooser from '../LangChooser/LangChooser';
+
 import './Header.scss';
 
 const Header = () => {
   return (
     <div className="header">
-      <ul className="list-link">
-        <li>
-          <a href="/">Default</a>
-        </li>
-        <li>
-          <a href="/">Minimal</a>
-        </li>
-        <li>
-          <a href="/">Retro</a>
-        </li>
-      </ul>
+      <SkinChooser
+        skins={[
+          { id: 'skin-default', label: 'Default' },
+          { id: 'skin-minimal', label: 'Minimal' },
+          { id: 'skin-retro', label: 'Retro' },
+        ]}
+      />
 
-      <ul className="list-link">
-        <li>
-          <a href="/">HU</a>
-        </li>
-        <li>
-          <a href="/">EN</a>
-        </li>
-      </ul>
+      <LangChooser
+        languages={[
+          { id: 'en-US', label: 'EN' },
+          { id: 'hu-HU', label: 'HU' },
+        ]}
+      />
     </div>
   );
 };

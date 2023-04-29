@@ -1,20 +1,33 @@
-import getNumSeparator from '../i18n';
-import { CALCULATOR_INITIAL_STATE } from '../reducers/calculatorReducer';
+import i18next from 'i18next';
+
+import { CALCULATOR_INITIAL_STATE } from '../hooks/useCalculator';
+
+/**
+ * Translated number separators
+ */
+export const numSeparator = () => {
+  return {
+    decimalSeparator: i18next.t('decimal_separator'),
+    thousandSeparator: i18next.t('thousand_separator'),
+  };
+};
 
 /**
  * Convert string number to float
  */
 export const formatFloat = (number) => {
+  const { decimalSeparator, thousandSeparator } = numSeparator();
+
   // Add zero if number is undefined or decimal separator
-  if (typeof number === 'undefined' || number === getNumSeparator('decimal')) {
+  if (typeof number === 'undefined' || number === decimalSeparator) {
     return 0;
   }
 
   return parseFloat(
     number
       .toString()
-      .replace(getNumSeparator('thousand'), '')
-      .replace(getNumSeparator('decimal'), '.')
+      .replace(decimalSeparator, '.')
+      .replace(thousandSeparator, '')
   );
 };
 
@@ -22,6 +35,8 @@ export const formatFloat = (number) => {
  * Convert operand to string for display
  */
 export const formatToDisplay = (operand, typing = false) => {
+  const { decimalSeparator, thousandSeparator } = numSeparator();
+
   const { before, number, after } = operand;
   let integer = null;
   let decimal = null;
@@ -29,8 +44,8 @@ export const formatToDisplay = (operand, typing = false) => {
   let digitCount = 1;
 
   // Prevent format on empty number
-  if (number === '') {
-    return number;
+  if (number === '' || number === null) {
+    return '';
   }
 
   // Get integer from number
@@ -40,25 +55,24 @@ export const formatToDisplay = (operand, typing = false) => {
   for (let i = integer.length - 1; i >= 0; i--) {
     result = integer.toString()[i] + result;
     if (digitCount % 3 === 0 && digitCount !== 0 && i !== 0) {
-      result = getNumSeparator('thousand') + result;
+      result = thousandSeparator + result;
     }
     digitCount++;
   }
 
   // Get decimal from number
-  decimal = number
-    .toString()
-    .replace(getNumSeparator('decimal'), '.')
-    .split('.')[1];
+  decimal = number.toString().replace(decimalSeparator, '.').split('.')[1];
 
   // Add decimal on typing and there is decimal or the decimal is 0
   if (
     (typing || parseInt(decimal) > 0) &&
-    (number.toString().slice(-1) === getNumSeparator('decimal') ||
+    (number.toString().slice(-1) === decimalSeparator ||
       (typeof decimal !== 'undefined' && decimal.length > 0))
   ) {
-    result += getNumSeparator('decimal') + decimal;
+    result += decimalSeparator + decimal;
   }
+
+  //result = number;
 
   // Add content before number
   if (before) {

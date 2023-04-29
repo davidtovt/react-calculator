@@ -1,10 +1,17 @@
+import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { CalculatorContext } from '../../contexts/calculator';
 import { formatToDisplay } from '../../utils/helpers';
 
 import './Display.scss';
 
-const Display = ({ state }) => {
-  const { prevOperand, operator, currOperand, calculation, error, memory } =
-    state;
+const Display = () => {
+  const { t } = useTranslation();
+  const {
+    state: { prevOperand, operator, currOperand, calculation, error, memory },
+  } = useContext(CalculatorContext);
+  
   let equationValue = '';
   let resultValue = '';
 
@@ -31,7 +38,7 @@ const Display = ({ state }) => {
   return (
     <div className="display">
       <div className="d-flex justify-between mb-05">
-        <span>Memory:</span>
+        <span>{t('Memory:')}</span>
         <span className="text-end">{memory || '-'}</span>
       </div>
       <input type="text" defaultValue={equationValue} />

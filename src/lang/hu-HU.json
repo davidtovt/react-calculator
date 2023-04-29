@@ -1,0 +1,8 @@
+{
+  "A negative number has no square root!": "Negatív számnak nem lehet négyzetgyöke!",
+  "Memory:": "Memória:",
+  "You cannot divide by zero.": "Nem lehet nullával osztani.",
+
+  "decimal_separator": ",",
+  "thousand_separator": " "
+}
