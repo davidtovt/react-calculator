@@ -205,9 +205,11 @@ export const NumberInput = styled.input`
   ${({ theme }) =>
     theme.skin === 'retro' &&
     css`
-      padding: 0.5rem 1rem 0 !important;
+      padding: 1rem 1rem .25rem 2rem !important;
       font-size: ${(props) => props.theme.fontSizeLg};
       line-height: 1;
+      letter-spacing: -0.0125em;
+      font-family: Segment16C;
       border-radius: 0.25rem;
       color: #1b1419;
       background: #c9d8c5;

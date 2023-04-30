@@ -44,7 +44,7 @@ export const retroSkin = {
   borderColor: 'rgba(#242e41, 0.07)',
   fontSize: '1rem',
   fontSizeSm: '.75rem',
-  fontSizeLg: '2rem',
+  fontSizeLg: '3rem',
   animationTime: '0s',
   animationType: 'ease-out',
   gap: '0.5rem',
