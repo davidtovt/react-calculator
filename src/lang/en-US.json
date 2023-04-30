@@ -1,8 +1,4 @@
 {
-  "A negative number has no square root!": "A negative number has no square root!",
-  "Memory:": "Memory:",
-  "You cannot divide by zero.": "You cannot divide by zero.",
-
   "decimal_separator": ".",
   "thousand_separator": ","
 }

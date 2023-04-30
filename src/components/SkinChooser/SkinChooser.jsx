@@ -21,13 +21,13 @@ const SkinChooser = ({ skins }) => {
   return (
     <ul className="list-link">
       {skins &&
-        skins.map((skin) => (
-          <li key={skin.id}>
+        skins.map(({ id, label }) => (
+          <li key={id}>
             <button
-              disabled={currentSkin === skin.id}
-              onClick={() => handleSkinChange(skin.id)}
+              disabled={currentSkin === id}
+              onClick={() => handleSkinChange(id)}
             >
-              {skin.label}
+              {label}
             </button>
           </li>
         ))}

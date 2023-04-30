@@ -1,6 +1,14 @@
 {
   "A negative number has no square root!": "Negatív számnak nem lehet négyzetgyöke!",
+  "Add to memory": "Memóriához adás",
+  "Clear all": "Mindent töröl",
+  "Clear entered": "Beírt szám törölése",
+  "Delete digit": "Számjegy törölése",
+  "empty": "üres",
   "Memory:": "Memória:",
+  "Memory clear": "Memória törlése",
+  "Memory read": "Memória olvasása",
+  "Remove from memory": "Memóriából kivonás",
   "You cannot divide by zero.": "Nem lehet nullával osztani.",
 
   "decimal_separator": ",",

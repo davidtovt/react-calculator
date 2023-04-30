@@ -1,13 +1,14 @@
 import { useReducer } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  numSeparator,
-  formatFloat,
   toggleNumSign,
+  decimalToOtherSystem,
   setError,
 } from '../utils/helpers';
+import { numSeparator, stringToFloat } from '../utils/numFormatter';
 
 export const CALCULATOR_INITIAL_STATE = {
+  numSystem: 10,
   prevOperand: {
     before: '',
     number: '',
@@ -26,6 +27,7 @@ export const CALCULATOR_INITIAL_STATE = {
 };
 
 export const CALCULATOR_ACTION_TYPES = {
+  SET_NUM_SYSTEM: 'SET_NUM_SYSTEM',
   SET_OPERAND: 'SET_OPERAND',
   TOGGLE_SIGN: 'TOGGLE_SIGN',
   SET_OPERATOR: 'SET_OPERATOR',
@@ -43,9 +45,9 @@ export const CALCULATOR_ACTION_TYPES = {
 export default function useCalculator() {
   const { t } = useTranslation();
 
-  const calculate = (firstDigit, operator, lastDigit) => {
-    const first = formatFloat(firstDigit);
-    const last = formatFloat(lastDigit);
+  const calculate = (firstNumber, operator, lastNumber) => {
+    const first = stringToFloat(firstNumber);
+    const last = stringToFloat(lastNumber);
     let calculation = '';
 
     switch (operator) {
@@ -74,9 +76,14 @@ export default function useCalculator() {
     return calculation.toString();
   };
 
+  const setNumSystem = (state, numSystem) => {
+    return { ...state, numSystem };
+  };
+
   const setOperand = (state, digit) => {
     const { decimalSeparator } = numSeparator();
-    const { currOperand, calculation } = state;
+    const { currOperand, calculation, numSystem } = state;
+    let currentNumber = digit;
 
     // Reset display if exists calculation
     if (calculation) {
@@ -95,11 +102,22 @@ export default function useCalculator() {
       return state;
     }
 
+    if (numSystem !== 10) {
+      // Convert stored decimal number to current number system and join current digit
+      currentNumber =
+        decimalToOtherSystem(currOperand.number, numSystem) + digit;
+
+      // Store number as decimal
+      currentNumber = parseInt(currentNumber, numSystem);
+    } else {
+      currentNumber = currOperand.number + digit;
+    }
+  
     return {
       ...state,
       currOperand: {
         ...state.currOperand,
-        number: currOperand.number + digit,
+        number: currentNumber,
       },
       error: '',
     };
@@ -374,6 +392,9 @@ export default function useCalculator() {
     const { type, payload } = action;
 
     switch (type) {
+      case CALCULATOR_ACTION_TYPES.SET_NUM_SYSTEM:
+        return setNumSystem(state, payload);
+
       case CALCULATOR_ACTION_TYPES.SET_OPERAND:
         return setOperand(state, payload);
 

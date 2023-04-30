@@ -1,20 +1,29 @@
-import "./Switcher.scss";
+import { useState } from 'react';
+import './Switcher.scss';
 
-const Switcher = () => {
+const Switcher = ({ name, options, defaultValue, onChange }) => {
+  const [defaultCheck, setDefaultCheck] = useState(parseInt(defaultValue));
+
+  const handleChange = (e, value) => {
+    setDefaultCheck(value);
+    onChange(e);
+  };
+
   return (
     <div className="switcher">
-      <label>
-        <input type="radio" name="numeral-system" value="hex" />
-        HEX
-      </label>
-      <label>
-        <input type="radio" name="numeral-system" value="dec" defaultChecked />
-        DEC
-      </label>
-      <label>
-        <input type="radio" name="numeral-system" value="bin" />
-        BIN
-      </label>
+      {options &&
+        options.map(({ value, label }) => (
+          <label key={name + value}>
+            <input
+              type="radio"
+              name={name}
+              value={value}
+              onChange={(e) => handleChange(e, value)}
+              checked={defaultCheck === value}
+            />
+            {label}
+          </label>
+        ))}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { CalculatorContext } from '../../contexts/calculator';
 
-import "./LangChooser.scss";
+import './LangChooser.scss';
 
 const LangChooser = ({ languages }) => {
   const { i18n } = useTranslation();
@@ -21,14 +21,14 @@ const LangChooser = ({ languages }) => {
   return (
     <ul className="list-link">
       {languages &&
-        languages.map((language) => (
-          <li key={language.id}>
+        languages.map(({ id, label }) => (
+          <li key={id}>
             <button
               type="button"
-              onClick={() => handleLangChange(language.id)}
-              disabled={i18n.language === language.id}
+              onClick={() => handleLangChange(id)}
+              disabled={i18n.language === id}
             >
-              {language.label}
+              {label}
             </button>
           </li>
         ))}
