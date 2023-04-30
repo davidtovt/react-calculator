@@ -1,15 +1,15 @@
-import './Button.scss';
+import { Btn } from "./Button.styled";
 
-const Button = ({ children, handleClick, mode, ...attrs }) => {
+const Button = ({ children, handleClick, group, ...attrs }) => {
   return (
-    <button
-      className="btn"
+    <Btn
+      group={group}
       type="button"
       onClick={handleClick}
       {...attrs}
     >
-      {children}
-    </button>
+      <span>{children}</span>
+    </Btn>
   );
 };
 

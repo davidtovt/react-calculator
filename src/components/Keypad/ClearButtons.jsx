@@ -29,17 +29,21 @@ const ClearButtons = () => {
 
   return (
     <div className="grid grid-cols-3">
-      <Button mode="clear" handleClick={clearAll} title={t('Clear all')}>
+      <Button group="clear" handleClick={clearAll} title={t('Clear all')}>
         CA
       </Button>
       <Button
-        mode="clear"
+        group="clear"
         handleClick={clearEntered}
         title={t('Clear entered')}
       >
         CE
       </Button>
-      <Button mode="clear" handleClick={deleteDigit} title={t('Delete digit')}>
+      <Button
+        group="clear"
+        handleClick={deleteDigit}
+        title={t('Delete digit')}
+      >
         DEL
       </Button>
     </div>

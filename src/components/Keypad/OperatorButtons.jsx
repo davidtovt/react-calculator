@@ -4,13 +4,12 @@ import { CalculatorContext } from '../../contexts/calculator';
 import Button from '../Button/Button';
 
 const OperatorButtons = () => {
-  const { dispatch, CALCULATOR_ACTION_TYPES } =
-    useContext(CalculatorContext);
+  const { dispatch, CALCULATOR_ACTION_TYPES } = useContext(CalculatorContext);
 
   const setOperator = (e, operator) => {
     dispatch({
       type: CALCULATOR_ACTION_TYPES.SET_OPERATOR,
-      payload: operator ? operator : e.target.innerHTML,
+      payload: operator ? operator : e.target.innerText,
     });
   };
 
@@ -23,7 +22,7 @@ const OperatorButtons = () => {
   const unaryCalculate = (e) => {
     dispatch({
       type: CALCULATOR_ACTION_TYPES.SET_UNARY_CALCULATION,
-      payload: e.target.innerHTML,
+      payload: e.target.innerText,
     });
   };
 
@@ -35,32 +34,32 @@ const OperatorButtons = () => {
 
   return (
     <>
-      <div>
-        <Button mode="operator" handleClick={setOperator}>
+      <div className="grid">
+        <Button group="operator" handleClick={setOperator}>
           ÷
         </Button>
-        <Button mode="operator" handleClick={setOperator}>
+        <Button group="operator" handleClick={setOperator}>
           ×
         </Button>
-        <Button mode="operator" handleClick={setOperator}>
+        <Button group="operator" handleClick={setOperator}>
           -
         </Button>
-        <Button mode="operator" handleClick={setOperator}>
+        <Button group="operator" handleClick={setOperator}>
           +
         </Button>
       </div>
 
-      <div>
-        <Button mode="operator" handleClick={calculatePercentage}>
+      <div className="grid">
+        <Button group="operator" handleClick={calculatePercentage}>
           %
         </Button>
-        <Button mode="operator" handleClick={unaryCalculate}>
+        <Button group="operator" handleClick={unaryCalculate}>
           √
         </Button>
-        <Button mode="operator" handleClick={setOperator}>
+        <Button group="operator" handleClick={setOperator}>
           ^
         </Button>
-        <Button mode="operator" handleClick={calculate}>
+        <Button group="operator" equal handleClick={calculate}>
           =
         </Button>
       </div>

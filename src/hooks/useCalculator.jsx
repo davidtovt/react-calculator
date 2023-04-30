@@ -85,6 +85,11 @@ export default function useCalculator() {
     const { currOperand, calculation, numSystem } = state;
     let currentNumber = digit;
 
+    // Add input limit
+    if(currOperand.number.toString().length >= 10 && !calculation) {
+      return state;
+    }
+
     // Reset display if exists calculation
     if (calculation) {
       state = CALCULATOR_INITIAL_STATE;
@@ -112,7 +117,7 @@ export default function useCalculator() {
     } else {
       currentNumber = currOperand.number + digit;
     }
-  
+
     return {
       ...state,
       currOperand: {
@@ -305,6 +310,11 @@ export default function useCalculator() {
     };
   };
 
+  const clearAll = (state) => {
+    const { numSystem } = state;
+    return {...CALCULATOR_INITIAL_STATE, numSystem};
+  }
+
   const clearEntered = (state) => {
     const { calculation } = state;
 
@@ -414,7 +424,7 @@ export default function useCalculator() {
         return setPercentageCalculation(state);
 
       case CALCULATOR_ACTION_TYPES.CLEAR_ALL:
-        return CALCULATOR_INITIAL_STATE;
+        return clearAll(state);
 
       case CALCULATOR_ACTION_TYPES.CLEAR_ENTERED:
         return clearEntered(state);

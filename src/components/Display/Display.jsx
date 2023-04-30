@@ -4,7 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { CalculatorContext } from '../../contexts/calculator';
 import { formatToDisplay } from '../../utils/numFormatter';
 
-import './Display.scss';
+import {
+  DisplayWrapper,
+  Memory,
+  MemorySing,
+  EquationInput,
+  NumberInput,
+} from './Display.styled.jsx';
 
 const Display = () => {
   const { t } = useTranslation();
@@ -44,16 +50,17 @@ const Display = () => {
   }
 
   return (
-    <div className="display">
-      <div className="d-flex justify-between mb-05">
+    <DisplayWrapper>
+      <Memory>
         <span>{t('Memory:')}</span>
         <span className="text-end">
-          {memory ? formatToDisplay({ number: memory }, numSystem) : t('empty')}
+          {memory ? formatToDisplay({ number: memory }, numSystem) : ''}
         </span>
-      </div>
-      <input type="text" defaultValue={equationValue} />
-      <input type="text" value={resultValue} readOnly />
-    </div>
+      </Memory>
+      <EquationInput type="text" defaultValue={equationValue} />
+      {memory ? <MemorySing>M</MemorySing> : ''}
+      <NumberInput type="text" value={resultValue} placeholder="0" readOnly />
+    </DisplayWrapper>
   );
 };
 

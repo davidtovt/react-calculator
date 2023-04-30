@@ -14,12 +14,12 @@ export const toggleNumSign = (number) => {
  * Decimal to other number system
  */
 export const decimalToOtherSystem = (number, numSystem) => {
-  if(number) {
+  if (number) {
     return parseFloat(number).toString(numSystem);
   }
 
   return number;
-}
+};
 
 /**
  * Set error for display

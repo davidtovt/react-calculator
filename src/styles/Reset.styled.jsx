@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
+
+export const ResetStyle = createGlobalStyle`
 *,
 ::after,
 ::before {
@@ -7,12 +10,8 @@
 * {
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-size: 1rem;
-  line-height: 1;
-  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-size: inherit;
+  line-height: inherit;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+}`;

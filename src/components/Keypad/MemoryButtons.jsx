@@ -30,9 +30,9 @@ const MemoryButtons = () => {
   };
 
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-2 gap-bottom">
       <Button
-        mode="memory"
+        group="memory"
         handleClick={memoryClear}
         disabled={!state.memory}
         title={t('Memory clear')}
@@ -40,7 +40,7 @@ const MemoryButtons = () => {
         MC
       </Button>
       <Button
-        mode="memory"
+        group="memory"
         handleClick={memoryRead}
         disabled={!state.memory}
         title={t('Memory read')}
@@ -48,14 +48,14 @@ const MemoryButtons = () => {
         MR
       </Button>
       <Button
-        mode="memory"
+        group="memory"
         handleClick={() => memoryChange('+')}
         title={t('Add to memory')}
       >
         M+
       </Button>
       <Button
-        mode="memory"
+        group="memory"
         handleClick={() => memoryChange('-')}
         title={t('Remove from memory')}
       >

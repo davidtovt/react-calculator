@@ -3,18 +3,19 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import SkinProvider from './contexts/skin';
 import CalculatorProvider from './contexts/calculator';
 
 import './i18n';
 
-import './assets/styles/main.scss';
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CalculatorProvider>
-      <App />
-    </CalculatorProvider>
+    <SkinProvider>
+      <CalculatorProvider>
+        <App />
+      </CalculatorProvider>
+    </SkinProvider>
   </React.StrictMode>
 );
 

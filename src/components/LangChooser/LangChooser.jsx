@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { CalculatorContext } from '../../contexts/calculator';
 
-import './LangChooser.scss';
+import { ListLinkStyle } from '../../styles/Components.styled';
 
 const LangChooser = ({ languages }) => {
   const { i18n } = useTranslation();
@@ -19,7 +19,7 @@ const LangChooser = ({ languages }) => {
   };
 
   return (
-    <ul className="list-link">
+    <ListLinkStyle>
       {languages &&
         languages.map(({ id, label }) => (
           <li key={id}>
@@ -32,7 +32,7 @@ const LangChooser = ({ languages }) => {
             </button>
           </li>
         ))}
-    </ul>
+    </ListLinkStyle>
   );
 };
 

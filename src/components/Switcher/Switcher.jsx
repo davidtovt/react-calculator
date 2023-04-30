@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import './Switcher.scss';
+
+import { SwitcherWrapper } from './Switcher.styled';
 
 const Switcher = ({ name, options, defaultValue, onChange }) => {
   const [defaultCheck, setDefaultCheck] = useState(parseInt(defaultValue));
@@ -10,7 +11,7 @@ const Switcher = ({ name, options, defaultValue, onChange }) => {
   };
 
   return (
-    <div className="switcher">
+    <SwitcherWrapper>
       {options &&
         options.map(({ value, label }) => (
           <label key={name + value}>
@@ -21,10 +22,10 @@ const Switcher = ({ name, options, defaultValue, onChange }) => {
               onChange={(e) => handleChange(e, value)}
               checked={defaultCheck === value}
             />
-            {label}
+            <span>{label} <span></span></span>
           </label>
         ))}
-    </div>
+    </SwitcherWrapper>
   );
 };
 

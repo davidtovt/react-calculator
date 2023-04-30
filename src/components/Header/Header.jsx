@@ -1,26 +1,28 @@
 import SkinChooser from '../SkinChooser/SkinChooser';
 import LangChooser from '../LangChooser/LangChooser';
 
-import './Header.scss';
+import { HeaderWrapper, HeaderInner } from './Header.styled';
 
 const Header = () => {
   return (
-    <div className="header">
-      <SkinChooser
-        skins={[
-          { id: 'skin-default', label: 'Default' },
-          { id: 'skin-minimal', label: 'Minimal' },
-          { id: 'skin-retro', label: 'Retro' },
-        ]}
-      />
+    <HeaderWrapper>
+      <HeaderInner>
+        <SkinChooser
+          skins={[
+            { id: 'default', label: 'Default' },
+            { id: 'minimal', label: 'Minimal' },
+            { id: 'retro', label: 'Retro' },
+          ]}
+        />
 
-      <LangChooser
-        languages={[
-          { id: 'en-US', label: 'EN' },
-          { id: 'hu-HU', label: 'HU' },
-        ]}
-      />
-    </div>
+        <LangChooser
+          languages={[
+            { id: 'en-US', label: 'EN' },
+            { id: 'hu-HU', label: 'HU' },
+          ]}
+        />
+      </HeaderInner>
+    </HeaderWrapper>
   );
 };
 
