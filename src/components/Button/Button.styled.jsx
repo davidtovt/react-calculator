@@ -1,9 +1,19 @@
 import styled, { css } from 'styled-components';
 
 export const Btn = styled.button`
+  display: flex;
   width: 100%;
   cursor: pointer;
   user-select: none;
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
 
   ${(props) =>
     props.group === 'digit' &&
@@ -133,7 +143,7 @@ export const Btn = styled.button`
     css`
       height: 3rem;
       border: 3px solid #160e0b;
-      font-size: 1.25rem;
+      font-size: 1.375rem;
       color: ${(props) => props.theme.calculatorTextColor};
       background: linear-gradient(to right, #302929 0%, #423839 100%);
       border-top-left-radius: 0.5rem;
@@ -164,10 +174,11 @@ export const Btn = styled.button`
 
       &:disabled,
       &:active {
-        border-width: 4px 3px 2px;
-        box-shadow: inset 0 2px 3px -2px rgba(255 255 255 / 30%),
-          inset 0 -2px 3px -2px rgba(255 255 255 / 30%),
-          0 1px 2px rgba(0 0 0 / 40%);
+        border-width: 3px 3px 2px;
+        color: rgba(255 255 255 / 80%);
+        box-shadow: inset 0 2px 3px -2px rgba(0 0 0 / 30%),
+          inset 0 10px 20px -4px rgba(0 0 0 / 30%),
+          0 1px 2px rgba(0 0 0 / 30%);
       }
     `}
 `;

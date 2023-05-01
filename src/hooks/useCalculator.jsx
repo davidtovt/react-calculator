@@ -316,7 +316,7 @@ export default function useCalculator() {
   }
 
   const clearEntered = (state) => {
-    const { calculation } = state;
+    const { calculation, memory } = state;
 
     // Clear entered number if there is no calculation yet
     if (!calculation) {
@@ -327,16 +327,16 @@ export default function useCalculator() {
       };
     }
 
-    return CALCULATOR_INITIAL_STATE;
+    return {...CALCULATOR_INITIAL_STATE, memory};
   };
 
   const deleteDigit = (state) => {
-    const { currOperand, calculation } = state;
+    const { currOperand, calculation, memory } = state;
     let newNumber = null;
 
     // Clear all if there is calculation
     if (calculation) {
-      return CALCULATOR_INITIAL_STATE;
+      return {...CALCULATOR_INITIAL_STATE, memory};
     }
 
     // Remove digits

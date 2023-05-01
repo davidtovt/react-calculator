@@ -86,7 +86,6 @@ export const SwitcherWrapper = styled.div`
     css`
       text-align: center;
       font-size: .75rem;
-      font-weight: 700;
       color: #171518;
 
       label {
@@ -105,17 +104,17 @@ export const SwitcherWrapper = styled.div`
         &:checked + span span:after {
           position: absolute;
           content: "";
-          top: -4px;
+          top: -5px;
           left: 50%;
-          bottom: -4px;
+          bottom: -5px;
           width: 16px;
-          background: linear-gradient(to bottom, #4d4c4e 0%, #373638 100%);
-          border-radius: 4px;
+          background: linear-gradient(to bottom, #373638 0%, #262527 100%);
+          border-radius: 5px;
           transform: translate(-50%, 0);
           box-shadow:
             inset 0 1px 3px 0px rgba(255 255 255 / 40%),
-            inset 0 -1px 2px 0px rgba(255 255 255 / 20%),
-            0 2px 3px rgba(0 0 0 / 30%);
+            inset 0 -1px 2px -2px rgba(255 255 255 / 20%),
+            0 1px 3px rgba(0 0 0 / 40%);
         }
       }
 
@@ -123,9 +122,9 @@ export const SwitcherWrapper = styled.div`
         span {
           position: relative;
           display: block;
-          height: 8px;
+          height: 6px;
           width: 100%;
-          margin-top: .25rem;
+          margin-top: .5rem;
           background: #171518;
         }
       }

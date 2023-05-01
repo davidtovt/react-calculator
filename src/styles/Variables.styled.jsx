@@ -1,6 +1,6 @@
 export const defaultSkin = {
   skin: "default",
-  bodyBg: '#f1f8fa',
+  bodyBg: '#fff',
   bodyTextColor: '#111',
   headerBg: 'rgba(255 255 255 / 20%)',
   headerTextColor: '#111',
@@ -18,10 +18,10 @@ export const defaultSkin = {
 
 export const minimalSkin = {
   skin: "minimal",
-  bodyBg: '#fff',
-  bodyTextColor: '#111',
-  headerBg: 'rgba(255 255 255 / 20%)',
-  headerTextColor: '#111',
+  bodyBg: '#222',
+  bodyTextColor: '#fff',
+  headerBg: 'rgba(0 0 0 / 0%)',
+  headerTextColor: '#fff',
   calculatorTextColor: '#111',
   borderColor: 'rgba(#242e41, 0.07)',
   fontSize: '1rem',
@@ -36,7 +36,7 @@ export const minimalSkin = {
 
 export const retroSkin = {
   skin: "retro",
-  bodyBg: '#333',
+  bodyBg: 'linear-gradient(to bottom, #696361 0%, #4a423e 100%)',
   bodyTextColor: '#fff',
   headerBg: 'rgba(0 0 0 / 10%)',
   headerTextColor: '#fff',

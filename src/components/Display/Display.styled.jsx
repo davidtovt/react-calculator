@@ -37,6 +37,8 @@ export const DisplayWrapper = styled.div`
       display: flex;
       flex-direction: column;
       margin-bottom: 1rem;
+      padding: 0 .25rem;
+      background: rgba(250 250 250 / 40%);
     `}
 
   /**
@@ -213,6 +215,7 @@ export const NumberInput = styled.input`
       border-radius: 0.25rem;
       color: #1b1419;
       background: #c9d8c5;
+      text-shadow: 2px 2px 0 rgba(0 0 0 / 10%);
       box-shadow: inset 0 4px 3px rgba(0 0 0 / 70%);
     `}
 `;
