@@ -13,7 +13,6 @@ const useMousePosition = (element) => {
 
     if (currentElement) {
       const updateMousePosition = (e) => {
-        console.log(e);
         setMousePosition({
           top: e.pageY ?? 0,
           left: e.pageX ?? 0,
