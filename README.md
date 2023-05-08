@@ -2,6 +2,8 @@
 
 Calculator built with React, with language and skin selector.
 
+![React Calculator](https://i.ibb.co/dPt2bBD/cover.png)
+
 ## Features
 
 - Four basic operations
